@@ -38,19 +38,20 @@ def pull_the_lever(slot_odds, bet):
         else:
             print(f'${player_wallet:.2f} cashed out, goodbye!')
             exit()
-    winner_result(reel_result)
+    # winner_result(reel_result)
+    add_winnings_to_wallet(reel_result, slot_odds, bet)
     return reel_result
 
 # reel_result = pull_the_lever(slot_odds)
 
-def winner_result(reel_result):
-    if reel_result[0] == reel_result[1] and reel_result[1] == reel_result[2]:
-        print('Winner')
-    elif reel_result[0] == reel_result[1] or reel_result[0] == reel_result[2] or reel_result[1] == reel_result[2]:
-        print('Partial Winner')
-    else:
-        print('Loser')
-    add_winnings_to_wallet(reel_result, slot_odds, bet)
+# def winner_result(reel_result):
+#     if reel_result[0] == reel_result[1] and reel_result[1] == reel_result[2]:
+#         print('Winner')
+#     elif reel_result[0] == reel_result[1] or reel_result[0] == reel_result[2] or reel_result[1] == reel_result[2]:
+#         print('Partial Winner')
+#     else:
+#         print('Loser')
+#     add_winnings_to_wallet(reel_result, slot_odds, bet)
 
 # winner_result(reel_result)
 
@@ -68,6 +69,8 @@ def add_winnings_to_wallet(reel_result, slot_odds, bet):
         winnings = (1 / slot_odds[reel_result[1]]) * 20 * int(bet)
         player_wallet += winnings
         print(f'Congradulations! You have won ${winnings:.2f}')
+    else:
+        print('Better luck next time!')
     navigation()
     
 
