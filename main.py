@@ -27,6 +27,7 @@ def pull_the_lever(slot_odds):
     reel_one = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
     reel_two = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
     reel_three = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
-    print(reel_one[0], reel_two[0], reel_three[0])
+    reel_result = [reel_one[0], reel_two[0], reel_three[0]]
+    return reel_result
     
 pull_the_lever(slot_odds)
