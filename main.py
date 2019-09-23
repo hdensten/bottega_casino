@@ -1,6 +1,6 @@
 import random
 
-player_wallet = 0
+player_wallet = 100
 
 def add_to_wallet():
     global player_wallet
@@ -24,6 +24,8 @@ slot_odds = {
 }
 
 def pull_the_lever(slot_odds):
+    global player_wallet
+    player_wallet -= 10
     reel_one = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
     reel_two = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
     reel_three = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
@@ -51,10 +53,14 @@ def add_winnings_to_wallet(reel_result, slot_odds):
         print(f'Congradulations! You have won ${winnings:.2f}')
     elif reel_result[0] == reel_result[1] or reel_result[0] == reel_result[2]:
         winnings = (1 / slot_odds[reel_result[0]]) * 200
+        player_wallet += winnings
         print(f'Congradulations! You have won ${winnings:.2f}')
     elif reel_result[1] == reel_result[2]:
         winnings = (1 / slot_odds[reel_result[1]]) * 200
+        player_wallet += winnings
         print(f'Congradulations! You have won ${winnings:.2f}')
     
 
 add_winnings_to_wallet(reel_result, slot_odds)
+
+print(player_wallet)
