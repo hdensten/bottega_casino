@@ -8,7 +8,8 @@ def add_to_wallet():
     player_wallet += int(deposit_amount)
     return player_wallet
 
-# add_to_wallet()
+print('Welcome to the Bottega Casino! Add money to your wallet to get started.')
+add_to_wallet()
 
 slot_odds = {
     '7': 3, 
@@ -64,3 +65,11 @@ def add_winnings_to_wallet(reel_result, slot_odds):
 add_winnings_to_wallet(reel_result, slot_odds)
 
 print(player_wallet)
+
+
+# def navigation():
+#     player_action = input(f'Would you like to... \n 1 : Play again \n 2 : Chash out and leave')
+#     if player_action == 1:
+#         reel_result = pull_the_lever(slot_odds)
+
+# navigation()
