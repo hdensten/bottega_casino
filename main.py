@@ -28,6 +28,18 @@ def pull_the_lever(slot_odds):
     reel_two = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
     reel_three = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
     reel_result = [reel_one[0], reel_two[0], reel_three[0]]
+    print(reel_result)
     return reel_result
-    
-pull_the_lever(slot_odds)
+
+reel_result = pull_the_lever(slot_odds)
+
+def winner_result(reel_result):
+    if reel_result[0] == reel_result[1] and reel_result[1] == reel_result[2]:
+        print('Winner')
+    elif reel_result[0] == reel_result[1] or reel_result[0] == reel_result[2] or reel_result[1] == reel_result[2]:
+        print('Partial Winner')
+    else:
+        print('Loser')
+
+
+winner_result(reel_result)
