@@ -24,8 +24,8 @@ slot_odds = {
 
 def pull_the_lever(slot_odds, bet):
     global player_wallet
-    if player_wallet >= float(bet):
-        player_wallet -= float(bet)
+    if player_wallet >= bet:
+        player_wallet -= bet
         reel_one = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
         reel_two = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
         reel_three = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
@@ -45,15 +45,15 @@ def pull_the_lever(slot_odds, bet):
 def add_winnings_to_wallet(reel_result, slot_odds, bet):
     global player_wallet
     if reel_result[0] == reel_result[1] and reel_result[1] == reel_result[2]:
-        winnings = (1 / slot_odds[reel_result[0]]) * 100 * float(bet)
+        winnings = (1 / slot_odds[reel_result[0]]) * 100 * bet
         player_wallet += winnings
         print(f'Congradulations! You have won ${winnings:.2f}')
     elif reel_result[0] == reel_result[1] or reel_result[0] == reel_result[2]:
-        winnings = (1 / slot_odds[reel_result[0]]) * 20 * float(bet)
+        winnings = (1 / slot_odds[reel_result[0]]) * 20 * bet
         player_wallet += winnings
         print(f'Congradulations! You have won ${winnings:.2f}')
     elif reel_result[1] == reel_result[2]:
-        winnings = (1 / slot_odds[reel_result[1]]) * 20 * float(bet)
+        winnings = (1 / slot_odds[reel_result[1]]) * 20 * bet
         player_wallet += winnings
         print(f'Congradulations! You have won ${winnings:.2f}')
     else:
@@ -62,14 +62,16 @@ def add_winnings_to_wallet(reel_result, slot_odds, bet):
 
 def navigation():
     global player_wallet
-    player_action = input(f'\nWould you like to... \n 1 : Play again \n 2 : Cash out and leave \n')
+    player_action = input(f'\nWould you like to... \n 1 : Play again \n 2 : Check wallet balance \n 3 : Cash out and leave \n')
     if player_action == '1':
         reel_result = pull_the_lever(slot_odds, bet)
     elif player_action == '2':
+        print(f'\nYou have ${player_wallet:.2f} in your wallet.')
+        navigation()
+    else:
         print(f'\n${player_wallet:.2f} cashed out, goodbye!\n')
-
 
 print('\nWelcome to the Bottega Casino! Add money to your wallet to get started.')
 add_to_wallet()
-bet = input('\nSet the bet amount:   ')
+bet = float(input('\nSet the bet amount:   '))
 reel_result = pull_the_lever(slot_odds, bet)
