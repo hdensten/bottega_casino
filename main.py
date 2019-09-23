@@ -13,12 +13,12 @@ def add_to_wallet():
 slot_odds = {
     '7': 3, 
     '777': 2, 
-    'Cherry': 10, 
-    'Apple': 10, 
-    'Orange': 10,
-    'Watermelon': 10,
-    'Pear': 10,
-    'Pineapple': 10,
+    'Cherry': 1, 
+    'Apple': 1, 
+    'Orange': 1,
+    'Watermelon': 1,
+    'Pear': 1,
+    'Pineapple': 1,
     'Bar': 2,
     'Pot of Gold': 1
 }
@@ -41,5 +41,14 @@ def winner_result(reel_result):
     else:
         print('Loser')
 
-
 winner_result(reel_result)
+
+def add_winnings_to_wallet(reel_result, slot_odds):
+    global player_wallet
+    if reel_result[0] == reel_result[1] and reel_result[1] == reel_result[2]:
+        winnings = (1 / slot_odds[reel_result[0]]) * 1000
+        player_wallet += winnings
+        print(f'Congradulations! You have won ${winnings:.2f}')
+    
+
+add_winnings_to_wallet(reel_result, slot_odds)
