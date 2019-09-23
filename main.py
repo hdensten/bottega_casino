@@ -24,13 +24,20 @@ slot_odds = {
 
 def pull_the_lever(slot_odds, bet):
     global player_wallet
-    # global slot_odds
-    player_wallet -= int(bet)
-    reel_one = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
-    reel_two = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
-    reel_three = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
-    reel_result = [reel_one[0], reel_two[0], reel_three[0]]
-    print(reel_result)
+    if player_wallet >= int(bet):
+        player_wallet -= int(bet)
+        reel_one = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
+        reel_two = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
+        reel_three = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
+        reel_result = [reel_one[0], reel_two[0], reel_three[0]]
+        print(reel_result)
+    else:
+        player_choice = input('Not enough money! Would you like to... \n 1 : Add to your wallet \n 2 : Cash out and leave \n')
+        if player_choice == '1':
+            add_to_wallet()
+        else:
+            print(f'${player_wallet:.2f} cashed out, goodbye!')
+            exit()
     winner_result(reel_result)
     return reel_result
 
