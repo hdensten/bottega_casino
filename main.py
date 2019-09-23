@@ -49,6 +49,12 @@ def add_winnings_to_wallet(reel_result, slot_odds):
         winnings = (1 / slot_odds[reel_result[0]]) * 1000
         player_wallet += winnings
         print(f'Congradulations! You have won ${winnings:.2f}')
+    elif reel_result[0] == reel_result[1] or reel_result[0] == reel_result[2]:
+        winnings = (1 / slot_odds[reel_result[0]]) * 200
+        print(f'Congradulations! You have won ${winnings:.2f}')
+    elif reel_result[1] == reel_result[2]:
+        winnings = (1 / slot_odds[reel_result[1]]) * 200
+        print(f'Congradulations! You have won ${winnings:.2f}')
     
 
 add_winnings_to_wallet(reel_result, slot_odds)
