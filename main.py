@@ -4,7 +4,7 @@ player_wallet = 0
 
 def add_to_wallet():
     global player_wallet
-    deposit_amount = input(f"Your current wallet balance is ${player_wallet:.2f}, how much would you like to add?   ")
+    deposit_amount = input(f"\nYour current wallet balance is ${player_wallet:.2f}, how much would you like to add?   ")
     player_wallet += int(deposit_amount)
     return player_wallet
 
@@ -30,7 +30,7 @@ def pull_the_lever(slot_odds, bet):
         reel_two = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
         reel_three = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
         reel_result = [reel_one[0], reel_two[0], reel_three[0]]
-        print(reel_result)
+        print(f'\n~[ {reel_result[0]} | {reel_result[1]} | {reel_result[2]} ]~\n')
     else:
         player_choice = input('Not enough money! Would you like to... \n 1 : Add to your wallet \n 2 : Cash out and leave \n')
         if player_choice == '1':
@@ -84,8 +84,8 @@ def navigation():
         print(f'${player_wallet:.2f} cashed out, goodbye!')
 
 
-print('Welcome to the Bottega Casino! Add money to your wallet to get started.')
+print('\nWelcome to the Bottega Casino! Add money to your wallet to get started.')
 add_to_wallet()
-bet = input('Set the bet amount:   ')
+bet = input('\nSet the bet amount:   ')
 # navigation()
 reel_result = pull_the_lever(slot_odds, bet)
