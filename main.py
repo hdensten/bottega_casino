@@ -44,10 +44,13 @@ def pull_the_lever(slot_odds, bet):
         player_choice = input('\nNot enough money! Would you like to... \n 1 : Add to your wallet \n 2 : Cash out and leave \n')
         if player_choice == '1':
             add_to_wallet()
-        else:
+        elif player_choice == '2':
             profit = (total_deposited + total_winnings) - total_deposited
             print(f'\n${player_wallet:.2f} cashed out, you made a profit of ${profit:.2f}\nGoodbye!\n')
             exit()
+        else:
+            print('Invalid input -> returning to main menu')
+            navigation()
 
 def add_winnings_to_wallet(reel_result, slot_odds, bet):
     global player_wallet
@@ -83,9 +86,12 @@ def navigation():
     elif player_action == '2':
         print(f'\nYou have ${player_wallet:.2f} in your wallet.')
         navigation()
-    else:
+    elif player_action == '3':
         profit = (total_deposited + total_winnings) - total_deposited
         print(f'\n${player_wallet:.2f} cashed out, you made a profit of ${profit:.2f}\nGoodbye!\n')
+    else:
+        print('Invalid input -> try again')
+        navigation()
 
 print('\nWelcome to the Bottega Casino! Add money to your wallet to get started.')
 player_wallet = float(input('\nHow much would you like add?   '))
