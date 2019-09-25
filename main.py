@@ -5,8 +5,7 @@ total_winnings = 0
 profit = 0
 
 def add_to_wallet():
-    global player_wallet
-    global total_deposited
+    global player_wallet, total_deposited
     deposit_amount = float(input(f"\nYour wallet balance is ${player_wallet:.2f}, how much would you like to add?   "))
     player_wallet += deposit_amount
     total_deposited += deposit_amount
@@ -27,10 +26,7 @@ slot_odds = {
 }
 
 def pull_the_lever(slot_odds, bet):
-    global player_wallet
-    global total_winnings
-    global total_deposited
-    global profit
+    global player_wallet, total_winnings, total_deposited, profit
     if player_wallet >= bet:
         player_wallet -= bet
         reel_one = random.choices(list(slot_odds.keys()), list(slot_odds.values()))
@@ -53,8 +49,7 @@ def pull_the_lever(slot_odds, bet):
             navigation()
 
 def add_winnings_to_wallet(reel_result, slot_odds, bet):
-    global player_wallet
-    global total_winnings
+    global player_wallet, total_winnings
     if reel_result[0] == reel_result[1] and reel_result[1] == reel_result[2]:
         winnings = (1 / slot_odds[reel_result[0]]) * 100 * bet
         player_wallet += winnings
@@ -76,10 +71,7 @@ def add_winnings_to_wallet(reel_result, slot_odds, bet):
     navigation()
 
 def navigation():
-    global player_wallet
-    global profit
-    global total_deposited
-    global total_winnings
+    global player_wallet, profit, total_deposited, total_winnings
     player_action = input(f'\nWould you like to... \n 1 : PULL THE LEVER! \n 2 : Check wallet balance \n 3 : Cash out and leave \n')
     if player_action == '1':
         reel_result = pull_the_lever(slot_odds, bet)
