@@ -85,7 +85,7 @@ def navigation():
         print('Invalid input -> try again')
         navigation()
 
-print('\nWelcome to the Bottega Casino! Add money to your wallet to get started.')
+print('\nWelcome to the Fruit Wheel of Fortune! Add money to your wallet to get started.')
 player_wallet = float(input('\nHow much would you like add?   '))
 total_deposited += player_wallet
 bet = float(input('\nSet the bet amount:   '))
